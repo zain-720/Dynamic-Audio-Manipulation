@@ -1,0 +1,27 @@
+Command Used: ./addecho -d 2 -v 2 short.wav short_22.wav
+Echo Delay: 2 samples
+Volume Scale: 2
+Original Audio File: short.wav
+Modified Audio File with Echo: short_22.wav
+Sampling Rate of Mono WAV File: 22050 Hz
+
+
+Samples of modified file with delay of 2 and volume scale of 2:
+[2, 2, 3, 3, 3, 9, 9, 12, 12, 12, 20, 20, 24, 24, 24, 12, 12, 6, 6, 6, 2, 2]
+
+
+Manual Calculation: To manually simulate the echo effect:
+An echo buffer is initialized with a length equal to the echo delay (in this case, 2 samples).
+For each original sample, the corresponding echo sample (initially zero) is scaled down by the volume scale (divided by 2).
+The scaled echo sample is added to the current original sample to create the new sample with the echo effect.
+Each new sample is clipped to ensure it stays within the 16-bit signed integer range.
+The echo buffer is updated with the current original sample for use in the next iteration.
+From there, the manually calculated echo samples are then converted to hexadecimal representation for comparison:
+
+0002, 0002, 0003, 0003, 0003, 0009, 0009, 000c, 000c, 000c, 0014, 0014, 0018, 0018, 0018, 000c, 000c, 0006, 0006, 0006, 0002, 0002
+
+
+They Match!
+This methodical approach demonstrates that by applying a delay of 2 samples and a volume scale of 2, 
+the modified audio file short_22.wav indeed reflects the intended echo effect. The comparison between the program's output and 
+manual calculations confirms the effectiveness of the echo application, showcasing the accuracy of our echo effect implementation.
